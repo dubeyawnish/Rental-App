@@ -6,6 +6,7 @@ import Login from './Components/Login/Login';
 import Navbar from './Components/Navbar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './Components/Register/Register';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <Route exact path='/signup' element={<Register />} />
       </Routes>
 
-
+      <Footer />
 
     </Router>
   );
