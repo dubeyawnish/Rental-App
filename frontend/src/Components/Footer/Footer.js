@@ -86,6 +86,12 @@ const Footer = () => {
                 </div>
 
             </div>
+
+            <div className='container-fluid text-white bg-blackish  d-flex justify-content-center  ' style={{ minHeight: '4rem' }}>
+                <p className='mt-3'>©2023 Copyright:</p>
+                <a className='mt-3 text-white' href='#'>ObifyConsulting.com</a>
+
+            </div>
         </div>
     )
 }
