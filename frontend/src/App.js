@@ -7,6 +7,10 @@ import Navbar from './Components/Navbar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './Components/Register/Register';
 import Footer from './Components/Footer/Footer';
+import MyProperty from './Components/MyProperty/MyProperty';
+import AddProperty from './Components/AddProperty/AddProperty';
+import MyTenants from './Components/MyTenants/MyTenants';
+import Profile from './Components/Profile/Profile';
 
 function App() {
   return (
@@ -17,6 +21,10 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/allproperty' element={<AllProperty />} />
+        <Route exact path='/myproperty' element={<MyProperty />} />
+        <Route exact path='/addproperty' element={<AddProperty />} />
+        <Route exact path='/mytenants' element={<MyTenants />} />
+        <Route exact path='/profile' element={<Profile />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/signup' element={<Register />} />
       </Routes>
