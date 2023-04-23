@@ -4,3 +4,16 @@
 .bg-blackish{
     background-color: darkslategray;
 }
+
+@media only screen and (max-width:450px){
+    .footer-center{
+        display: flex;
+        flex-direction: column;
+        
+        align-items: center;
+
+    }
+    .text-cen{
+        text-align: center;
+    }
+}

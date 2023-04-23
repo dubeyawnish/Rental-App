@@ -23,15 +23,16 @@ const Footer = () => {
 
             </div>
             <div className='container-fluid text-white bg-greyish  ' style={{ minHeight: '12rem' }}>
-                <div className=' container d-flex'>
+                <div className='container'>
+                <div className=' row   '>
                     <div className='col-lg-3 col-md-3 col-sm-12 '>
                         <div className='mt-5'>
-                            <h6 className='text-uppercase'>Obify Consulting</h6>
+                            <h6 className='footer-center text-uppercase'>Obify Consulting</h6>
 
                         </div>
 
-                        <div className='mt-4'>
-                            <p>lorem35 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam vitae elit non lobortis. Proin tempor, justo eu iaculis mattis, tellus ligula rhoncus </p>
+                        <div className='mt-4 '>
+                            <p className='text-cen'>lorem35 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam vitae elit non lobortis. Proin tempor, justo eu iaculis mattis, tellus ligula rhoncus </p>
                         </div>
 
                     </div>
@@ -53,12 +54,14 @@ const Footer = () => {
                         </div>
 
                     </div>
+
+
                     <div className='col-lg-3 col-md-3 col-sm-12 '>
                         <div className='mt-5 '>
-                            <h6 className='text-uppercase  '>Useful links</h6>
+                            <h6 className=' footer-center text-uppercase  '>Useful links</h6>
 
                         </div>
-                        <div className=" mt-2 d-flex flex-column   ">
+                        <div className=" mt-2 d-flex flex-column footer-center  ">
                             <a className="text-white p-1" href="">YourAccount</a>
                             <a className="text-white p-1" href="">Become an Affiliate</a>
                             <a className="text-white p-1" href="">Shipping Rates</a>
@@ -68,12 +71,14 @@ const Footer = () => {
                         </div>
 
                     </div>
+
+
                     <div className='col-lg-3 col-md-3 col-sm-12 '>
                         <div className='mt-5  '>
-                            <h6 className='text-uppercase  '>Contact</h6>
+                            <h6 className='text-uppercase text-cen '>Contact</h6>
 
                         </div>
-                        <div className='mt-3'>
+                        <div className='mt-3 footer-center'>
                             <p ><i class="me-1 fa-solid fa-house"></i>Prayagraj , Uttar Pradesh 211002</p>
                             <p><i class="me-1 fa-solid fa-envelope"></i>ObifyConsulting.com</p>
                             <p><i class="me-1 fa-solid fa-phone"></i>7894562845</p>
@@ -83,6 +88,7 @@ const Footer = () => {
 
                     </div>
 
+                </div>
                 </div>
 
             </div>
