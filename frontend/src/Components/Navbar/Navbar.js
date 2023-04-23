@@ -36,9 +36,9 @@ const Navbar = () => {
                             </li>
 
                         </ul>
-                        <li className="nav-item">
+                        <div className="nav-item">
                             <button className=" btn btn-danger " >LogOut</button>
-                        </li>
+                        </div>
 
                     </div>
                 </div>
