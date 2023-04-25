@@ -4,10 +4,28 @@ const Profile = () => {
   return (
     <div>
       <div className='container mt-5'>
-        <h5 >My Profile</h5>
-        <div className='row container border border-danger'>
-          <div className='col-lg-4 col-md-4 col-sm-12 border border-danger '>
-            first column
+        <h5 className='ps-2' >My Profile</h5>
+        <div className='row container '>
+          <div className='col-lg-4 col-md-4 col-sm-12 mb-4  '>
+            <div className='border '>
+              <div className='d-flex m-3'>
+                <div className='me-2'>
+                  <i className=" fw-bold fa-solid fa-pen-to-square"></i>
+                </div>
+                <div>
+                  <img src='https://www.istockphoto.com/resources/images/PhotoFTLP/P2-APR-iStock-1309110294.jpg' height={200} width={280} alt='img' />
+                </div>
+              </div>
+             
+                <h5 className='text-center'>Owner one</h5>
+             
+              
+                <p className='mt-4 text-center'>Role:Owner</p>
+             
+              
+                <p className='text-center'>Bangolore, Karnataka</p>
+              
+            </div>
 
           </div>
           <div className='col-lg-8 col-md-8 col-sm-12 '>
@@ -52,7 +70,7 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-             
+
             <div className=" my-4 border">
               <div className='d-flex justify-content-between'>
                 <div className=''>
