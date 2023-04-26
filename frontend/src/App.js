@@ -11,6 +11,8 @@ import MyProperty from './Components/MyProperty/MyProperty';
 import AddProperty from './Components/AddProperty/AddProperty';
 import MyTenants from './Components/MyTenants/MyTenants';
 import Profile from './Components/Profile/Profile';
+import EditPersonalData from './Components/EditPersonalData/EditPersonalData';
+import EditAdress from './Components/EditAddress/EditAdress';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route exact path='/addproperty' element={<AddProperty />} />
         <Route exact path='/mytenants' element={<MyTenants />} />
         <Route exact path='/profile' element={<Profile />} />
+        <Route exact path='/profile/pd' element={<EditPersonalData />} />
+        <Route exact path='/profile/address' element={<EditAdress />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/signup' element={<Register />} />
       </Routes>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Profile = () => {
   return (
@@ -34,9 +35,9 @@ const Profile = () => {
                 <div className=''>
                   <h5 className='mt-3 ms-3'>Personal Details</h5>
                 </div>
-                <div className='me-3'>
+                <Link to='/profile/pd' className='me-3'>
                   <button type='button' className=' mt-2 btn btn-warning'><i class="fa-regular fa-pen-to-square"></i> Edit</button>
-                </div>
+                </Link>
 
               </div>
               <hr className='mx-3' />
@@ -76,9 +77,9 @@ const Profile = () => {
                 <div className=''>
                   <h5 className='mt-3 ms-3'>Address Details</h5>
                 </div>
-                <div className='me-3'>
+                <Link to ='/profile/address' className='me-3'>
                   <button type='button' className=' mt-2 btn btn-warning'><i class="fa-regular fa-pen-to-square"></i> Edit</button>
-                </div>
+                </Link>
 
               </div>
               <hr className='mx-3' />
