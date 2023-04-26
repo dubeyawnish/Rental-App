@@ -32,7 +32,7 @@ const EditAdress = () => {
               <input type="text" className="form-control" id="pcode" />
             </div>
 
-            <div className=' mt-2 d-grid'><button type="submit" className="btn btn-success">ADD</button></div>
+            <div className=' mt-2 d-grid'><button type="submit" className="btn btn-success">Save</button></div>
 
           </form>
         </div>
