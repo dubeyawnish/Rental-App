@@ -4,9 +4,9 @@ const MyProperty = () => {
   return (
     <div className='container'>
       <div className='container mt-3  shadow p-3 mb-5 bg-body-tertiary rounded'>
-        <h3 className='text-center text-uppercase'>My Properties</h3>
+        <h3 className='text-center text-muted text-uppercase'>My Properties</h3>
       </div>
-      <h5>My Properties:3</h5>
+      <h5 className='text-muted'>My Properties:3</h5>
       <div className='my-3'>
         <input className=" text-muted  me-2" type="search" placeholder="Search Title..." />
       </div>
