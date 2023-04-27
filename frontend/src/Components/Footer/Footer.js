@@ -79,10 +79,10 @@ const Footer = () => {
 
                         </div>
                         <div className='mt-3 footer-center'>
-                            <p ><i class="me-1 fa-solid fa-house"></i>Prayagraj , Uttar Pradesh 211002</p>
-                            <p><i class="me-1 fa-solid fa-envelope"></i>ObifyConsulting.com</p>
-                            <p><i class="me-1 fa-solid fa-phone"></i>7894562845</p>
-                            <p><i class="me-1 fa-solid fa-print"></i>4579554455</p>
+                            <p ><i className="me-1 fa-solid fa-house"></i>Prayagraj , Uttar Pradesh 211002</p>
+                            <p><i className="me-1 fa-solid fa-envelope"></i>ObifyConsulting.com</p>
+                            <p><i className="me-1 fa-solid fa-phone"></i>7894562845</p>
+                            <p><i className="me-1 fa-solid fa-print"></i>4579554455</p>
                         </div>
 
 

@@ -36,7 +36,7 @@ const Profile = () => {
                   <h5 className='mt-3 ms-3'>Personal Details</h5>
                 </div>
                 <Link to='/profile/pd' className='me-3'>
-                  <button type='button' className=' mt-2 btn btn-warning'><i class="fa-regular fa-pen-to-square"></i> Edit</button>
+                  <button type='button' className=' mt-2 btn btn-warning'><i className="fa-regular fa-pen-to-square"></i> Edit</button>
                 </Link>
 
               </div>
@@ -78,7 +78,7 @@ const Profile = () => {
                   <h5 className='mt-3 ms-3'>Address Details</h5>
                 </div>
                 <Link to ='/profile/address' className='me-3'>
-                  <button type='button' className=' mt-2 btn btn-warning'><i class="fa-regular fa-pen-to-square"></i> Edit</button>
+                  <button type='button' className=' mt-2 btn btn-warning'><i className="fa-regular fa-pen-to-square"></i> Edit</button>
                 </Link>
 
               </div>

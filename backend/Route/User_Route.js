@@ -3,7 +3,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-dotenv.config();
+//dotenv.config();
 
 
 
@@ -24,7 +24,7 @@ router.post('/signup', (req, res) => {
             }
             bcrypt.hash(password, 16)
                 .then((hashedpassword) => {
-                    const user = new UserModel({ firstName: firstName, lastName: lastName, phone: phone, email: email, password: hashedpassword, role })
+                    const user = new UserModel({ firstName: firstName, lastName: lastName, phone: phone, email: email, password: hashedpassword, role:role })
                     user.save()
                         .then((newUser) => {
                             res.status(201).json({ result: "User registered successfully" });
@@ -55,16 +55,17 @@ router.post('/login', (req, res) => {
         return res.status(404).json({ error: "One or more mandatory fields empty" });
     }
     UserModel.findOne({ email: email })
-        .then((userInDb) => {
+        .then((userInDb) => { // if email find in db then whole data in userModel will be displayed
             if (!userInDb) {
                 res.status(401).json({ error: "Invalid Credentials" });
             }
             bcrypt.compare(password, userInDb.password)
                 .then((didmatch) => {
                     if (didmatch) {
+                        //console.log(didmatch);
                         const jwttoken = jwt.sign({ _id: userInDb._id }, process.env.JWT_SECRET);
                         const userInfo = { "email": userInDb.email, "firstName": userInDb.firstName, "lastName": userInDb.lastName, "_id": userInDb._id };
-                        res.status(200).json({ result: { token: jwttoken, user: userInfo } });
+                        res.status(201).json({ result: { token: jwttoken, user: userInfo } });
 
                     }
                     else {
