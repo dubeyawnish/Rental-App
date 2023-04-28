@@ -11,50 +11,22 @@ const MyProperty = () => {
         <input className=" text-muted  me-2" type="search" placeholder="Search Title..." />
       </div>
       <div className='row mb-3'>
-      <div className='col-lg-4 col-md-4 col-sm-12 mb-3'>
-        <div className="card" >
-          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8SG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" height={300} className="card-img-top" alt="..." />
-          <div className="card-body">
-            <h6 className="card-title text-muted">2BHK flat in Delhi</h6>
-            <p className="card-text text-muted">2BHK Flatt in Btm layout Delhi</p>
-            <div className='d-flex justify-content-around'>
-            <a href="#" className="btn btn-primary">Details</a>
-            <a href="#" className="btn btn-warning">Edit</a>
-            <a href="#" className="btn btn-danger">Delete</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className='col-lg-4 col-md-4 col-sm-12 mb-3'>
-      <div className="card" >
-          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8SG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" height={300} className="card-img-top" alt="..." />
-          <div className="card-body">
-            <h6 className="card-title text-muted">2BHK flat in Delhi</h6>
-            <p className="card-text text-muted">2BHK Flatt in Btm layout Delhi</p>
-            <div className='d-flex justify-content-around'>
-            <a href="#" className="btn btn-primary">Details</a>
-            <a href="#" className="btn btn-warning">Edit</a>
-            <a href="#" className="btn btn-danger">Delete</a>
+        <div className='col-lg-4 col-md-4 col-sm-12 mb-3'>
+          <div className="card" >
+            <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8SG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" height={300} className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h6 className="card-title text-muted">2BHK flat in Delhi</h6>
+              <p className="card-text text-muted">2BHK Flatt in Btm layout Delhi</p>
+              <div className='d-flex justify-content-around'>
+                <a href="#" className="btn btn-primary">Details</a>
+                <a href="#" className="btn btn-warning">Edit</a>
+                <a href="#" className="btn btn-danger">Delete</a>
+              </div>
             </div>
           </div>
         </div>
 
-      </div>
-      <div className='col-lg-4 col-md-4 col-sm-12 mb-3'>
-      <div className="card" >
-          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8SG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" height={300} className="card-img-top" alt="..." />
-          <div className="card-body">
-            <h6 className="card-title text-muted">2BHK flat in Delhi</h6>
-            <p className="card-text text-muted">2BHK Flatt in Btm layout Delhi</p>
-            <div className='d-flex justify-content-around'>
-            <a href="#" className="btn btn-primary">Details</a>
-            <a href="#" className="btn btn-warning">Edit</a>
-            <a href="#" className="btn btn-danger">Delete</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
+        
       </div>
     </div>
   )

@@ -20,7 +20,7 @@ router.post('/addProperties', authMiddleWare, authRole('owner'), (request, respo
         propertyImgName,
         user: userId,
         address: address
-        
+
     })
     propertiesModel.save()
         .then((savedProperties) => {
@@ -31,6 +31,19 @@ router.post('/addProperties', authMiddleWare, authRole('owner'), (request, respo
             return response.status(400).json({ error: "error occured" })
         })
 });
+
+
+router.get('/viewAllProperties/:userId', authMiddleWare, (req, res) => {
+    PropertiesModel.find({ user: { $in: req.params.userId } })
+    
+        .then((propertyFound) => {
+           
+            return res.json({ allProperties: propertyFound })
+        })
+        .catch((err) => {
+            return res.status(400).json({ err: "Property was not found!" })
+        })
+})
 
 
 module.exports = router;
