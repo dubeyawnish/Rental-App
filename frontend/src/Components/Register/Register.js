@@ -85,12 +85,12 @@ const Register = () => {
             </div>
             <div className=' mb-2 d-flex justify-content-between '>
               <div >
-                <input onChange={(e)=>setRole(e.target.value)}  type="radio" id="huey" name="drone" value="Owner"
+                <input onChange={(e)=>setRole(e.target.value)}  type="radio" id="huey" name="drone" value="owner"
                 />
                 <label for="huey">Owner</label>
               </div>
               <div>
-                <input onChange={(e)=>setRole(e.target.value)} type="radio" id="huey" name="drone" value="Tenent"
+                <input onChange={(e)=>setRole(e.target.value)} type="radio" id="huey" name="drone" value="tenent"
                 />
                 <label for="huey">Tenent</label>
               </div>
