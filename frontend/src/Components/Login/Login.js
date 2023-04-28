@@ -34,14 +34,13 @@ const Login = () => {
           localStorage.setItem("token", result.data.result.token)
           localStorage.setItem("user", JSON.stringify(result.data.result.user))
           localStorage.setItem("id", result.data.result.id)
-          dispatch({ type: "APISUCCESS", payload: result.data.result.user }) // user data goes in redux 
+          dispatch({ type: "APISUCCESS", payload: result.data.result.user }) // type and payload that is user data goes in reducer in action 
 
 
           navigate('/');
 
         }
-        setEmail('');
-        setPassword('');
+        
 
       })
       .catch((err) => {
