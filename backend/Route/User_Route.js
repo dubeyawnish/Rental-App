@@ -65,8 +65,9 @@ router.post('/login', (req, res) => {
                     if (didmatch) {
                         //console.log(didmatch);
                         const jwttoken = jwt.sign({ _id: userInDb._id }, process.env.JWT_SECRET);
-                        const userInfo = { "email": userInDb.email, "firstName": userInDb.firstName, "lastName": userInDb.lastName, "_id": userInDb._id };
-                        res.status(201).json({ result: { token: jwttoken, user: userInfo } });
+                        userInDb.password = undefined;
+                        const userInfo = { token: jwttoken, id: userInDb._id, user: userInDb }
+                        res.status(201).json({ result: userInfo });
 
                     }
                     else {

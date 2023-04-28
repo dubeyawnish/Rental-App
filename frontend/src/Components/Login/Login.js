@@ -3,11 +3,13 @@ import axios from 'axios';
 import { API_BASE_URL } from '../../config';
 import Swal from 'sweetalert2'
 import {useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 const Login = () => {
 
   const navigate=useNavigate();
+  const dispatch=useDispatch();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     setLoader(true);
     const reqbody = { email, password }
-    debugger;
+    //debugger;
     axios.post(`${API_BASE_URL}/login`, reqbody)
       .then((result) => {
         //debugger;
@@ -29,10 +31,11 @@ const Login = () => {
           //   title: 'Login Successfully'
           // });
           console.log(result);
-          localStorage.setItem("token", data.data.result.token)
-                    localStorage.setItem("user", JSON.stringify(data.data.result.user))
-                    localStorage.setItem("id", data.data.result.id)
-                    dispatch({ type: "APISUCCESS", payload: data.data.result.user })
+          localStorage.setItem("token", result.data.result.token)
+          localStorage.setItem("user", JSON.stringify(result.data.result.user))
+          localStorage.setItem("id", result.data.result.id)
+          dispatch({ type: "APISUCCESS", payload: result.data.result.user })
+        
 
           navigate('/'); 
 
