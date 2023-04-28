@@ -17,6 +17,7 @@ router.post('/signup', (req, res) => {
         return res.status(404).json({ error: 'One or more mandatory fields are empty' });
 
     }
+    
     UserModel.findOne({ email: email })
         .then((userInDb) => {
             if (userInDb) {

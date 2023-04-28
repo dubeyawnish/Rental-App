@@ -24,10 +24,16 @@ const Login = () => {
         //console.log(result);
         if (result.status === 201) {
           setLoader(false);
-          Swal.fire({
-            icon: 'success',
-            title: 'Login Successfully'
-          });
+          // Swal.fire({
+          //   icon: 'success',
+          //   title: 'Login Successfully'
+          // });
+          console.log(result);
+          localStorage.setItem("token", data.data.result.token)
+                    localStorage.setItem("user", JSON.stringify(data.data.result.user))
+                    localStorage.setItem("id", data.data.result.id)
+                    dispatch({ type: "APISUCCESS", payload: data.data.result.user })
+
           navigate('/'); 
 
         }
