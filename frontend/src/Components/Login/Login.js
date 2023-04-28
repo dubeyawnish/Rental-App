@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
 import Swal from 'sweetalert2'
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 
 const Login = () => {
 
-  const navigate=useNavigate();
-  const dispatch=useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,14 +30,14 @@ const Login = () => {
           //   icon: 'success',
           //   title: 'Login Successfully'
           // });
-          console.log(result);
+          //console.log(result);
           localStorage.setItem("token", result.data.result.token)
           localStorage.setItem("user", JSON.stringify(result.data.result.user))
           localStorage.setItem("id", result.data.result.id)
-          dispatch({ type: "APISUCCESS", payload: result.data.result.user })
-        
+          dispatch({ type: "APISUCCESS", payload: result.data.result.user }) // user data goes in redux 
 
-          navigate('/'); 
+
+          navigate('/');
 
         }
         setEmail('');
@@ -46,7 +46,7 @@ const Login = () => {
       })
       .catch((err) => {
         setLoader(false);
-       // console.log(err);
+        // console.log(err);
         Swal.fire({
           icon: 'error',
           title: err.response.data.error
