@@ -71,6 +71,17 @@ router.put('/editProperty/:propertyId', authMiddleWare, authRole('owner'), async
         console.log(err);
 
     }
+});
+
+
+router.delete('/deletepost/:propertyId', authMiddleWare, async (req, res) => {
+    const result = await PropertiesModel.findByIdAndDelete(req.params.propertyId)
+    if (result) {
+        res.send("deleted successfully")
+    }
+    else {
+        res.status(404).send("cannot find property with id " + req.params.propertyId)
+    }
 })
 
 
