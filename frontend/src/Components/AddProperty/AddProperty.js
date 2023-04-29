@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 
 
 const AddProperty = () => {
+  const { propertyId } = useParams();
   const navigate = useNavigate();
 
   const [title, setTitle] = useState()
@@ -22,6 +23,33 @@ const AddProperty = () => {
   const [state, setState] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [country, setCountry] = useState("");
+
+
+
+  const getPropertyById = async (propertyId) => {
+    const property = await axios.get(`${API_BASE_URL}/viewProperties/${propertyId}`)
+    setTitle(property.data.property.title)
+    setDescription(property.data.property.description)
+    setPrice(property.data.property.price)
+    setPropertyImgName(property.data.property.propertyImgName)
+    let img = { preview: `${API_BASE_URL}/files/${property.data.property.propertyImgName}`, data: '' }
+    setImage(img)
+    setAddress(property.data.property.address)
+    setAddressLineOne(property.data.property.address.addressLineOne)
+    setAddressLineTwo(property.data.property.address.addressLineTwo)
+    setCity(property.data.property.address.city)
+    setState(property.data.property.address.state)
+    setZipCode(property.data.property.address.zipCode)
+    setCountry(property.data.property.address.country)
+  }
+  useEffect(() => {
+    if (propertyId) {
+      getPropertyById(propertyId)
+    }
+
+  }, []);
+
+
 
 
   const handleImgChange = (e) => {
@@ -55,43 +83,78 @@ const AddProperty = () => {
 
   }
 
+
+  const updateAddress = async (address, addressId) => {
+    const editAddress = await axios.put(`${API_BASE_URL}/editAddress/${addressId}`, address, CONFIG_OBJ)
+    return editAddress
+  }
+
+  const updateExistingProperty = async (request, propertyId) => {
+    return await axios.put(`${API_BASE_URL}/editProperty/${propertyId}`, request, CONFIG_OBJ)
+  }
+
   const addProperty = async (event) => {
     event.preventDefault();
     let newAddress = {}
 
+    if (propertyId) {
+      const addressRequest = { addressLineOne, addressLineTwo, city, state, zipCode, country }
+      newAddress = await updateAddress(addressRequest, address._id)
+      const request = { title, description, price, propertyImgName, userId: localStorage.getItem("id"), address: newAddress.data.savedAddress };
+      const result = await updateExistingProperty(request, propertyId)
+      if (result.status == 200) {
+        Swal.fire({
 
-    newAddress = await addAddress()
-    const imgResponse = await uploadImage()
-    const request = { title, description, price, propertyImgName: imgResponse.data.fileName, userId: localStorage.getItem("id"), address: newAddress.data.savedAddress };
-    const result = await addNewProperty(request)
-    if (result.status == 200) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Property not added'
-      });
-    } else {
-      Swal.fire({
-        icon: 'success',
-        title: 'Property added successfully',
-        text: 'We will email you once Refresh is completed!'
-      });
-      navigate("/myproperty")
+          icon: 'success',
+          title: 'Property modified successfully',
+          text: 'We will email you once Refresh is completed!',
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Property not modified'
 
+        });
+        navigate("/myproperty")
+      }
     }
 
+    else {
+      newAddress = await addAddress()
+      const imgResponse = await uploadImage()
+      const request = { title, description, price, propertyImgName: imgResponse.data.fileName, userId: localStorage.getItem("id"), address: newAddress.data.savedAddress };
+      const result = await addNewProperty(request)
+      if (result.status == 201) {
+        Swal.fire({
 
+          icon: 'success',
+          title: 'Property added successfully',
+          text: 'We will email you once Refresh is completed!'
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Property not added'
+
+        });
+        navigate("/myproperty")
+
+      }
+
+
+    }
   }
 
   return (
     <div>
       <div className='container mt-3  shadow p-3 mb-5 bg-body-tertiary rounded'>
-        <h3 className='text-center text-uppercase'>Add Property</h3>
+        <h3 className='text-center text-uppercase'>{propertyId ? "Edit" : "Add"} Property</h3>
       </div>
 
       <div className='container mb-4'>
         <div className="contact-form-container mx-auto text-muted shadow p-3 lh-2" >
 
-          <form onSubmit= {(e)=> addProperty(e)}>
+          <form onSubmit={(e) => addProperty(e)}>
             <div className="mb-3">
               <label for="title" className="form-label">Title</label>
               <input value={title} onChange={(e) => { setTitle(e.target.value) }} type="text" className="form-control" id="title" />
@@ -137,7 +200,7 @@ const AddProperty = () => {
               <input value={zipCode} onChange={(e) => { setZipCode(e.target.value) }} type="text" className="form-control" id="pcode" />
             </div>
 
-            <div className=' mt-2 d-grid'><button type="submit" className="btn btn-success">ADD</button></div>
+            <div className=' mt-2 d-grid'><button type="submit" className="btn btn-success">{propertyId ? "Edit" : "Add"}</button></div>
 
           </form>
         </div>
@@ -146,4 +209,4 @@ const AddProperty = () => {
   )
 }
 
-export default AddProperty
+export default AddProperty;

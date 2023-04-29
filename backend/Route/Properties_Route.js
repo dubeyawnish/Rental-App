@@ -35,9 +35,9 @@ router.post('/addProperties', authMiddleWare, authRole('owner'), (request, respo
 
 router.get('/viewAllProperties/:userId', authMiddleWare, (req, res) => {
     PropertiesModel.find({ user: { $in: req.params.userId } })
-    
+
         .then((propertyFound) => {
-           
+
             return res.json({ allProperties: propertyFound })
         })
         .catch((err) => {
@@ -45,18 +45,32 @@ router.get('/viewAllProperties/:userId', authMiddleWare, (req, res) => {
         })
 })
 
-router.put('/editProperty/:propertyId', authMiddleWare, authRole('owner'), (req, res) => {
-    PropertiesModel.findByIdAndUpdate(req.params.propertyId, {
-        title: req.body.title, description: req.body.description, price: req.body.price, propertyImgName: req.body.imgName
-    }, { new: true }, function (err, docs) {
-        if (err) {
-            console.log(err)
-        }
-        else {
-            
-            return res.json({ savedProperties: docs })
-        }
-    })
+router.get('/viewProperties/:propertyId', (req, res) => {
+    PropertiesModel.findOne({ _id: req.params.propertyId })
+        .populate("user", "_id firstName lastName email phone")
+        .populate("address")
+        .then((propertyFound) => {
+            return res.json({ property: propertyFound })
+        })
+        .catch((err) => {
+            return res.status(400).json({ err: "Property was not found!" })
+        })
+})
+
+router.put('/editProperty/:propertyId', authMiddleWare, authRole('owner'), async (req, res) => {
+    // mogoose shows error with callbackfunction for this i use try catch beacuse with findByIdandupdate callback fuction is deprecated
+    try {
+        const result = await PropertiesModel.findByIdAndUpdate(req.params.propertyId, {
+            title: req.body.title, description: req.body.description, price: req.body.price, propertyImgName: req.body.imgName
+        }, { new: true });
+
+        return res.json({ savedProperties: result });
+
+    }
+    catch (err) {
+        console.log(err);
+
+    }
 })
 
 

@@ -25,6 +25,7 @@ function App() {
         <Route exact path='/allproperty' element={<AllProperty />} />
         <Route exact path='/myproperty' element={<MyProperty />} />
         <Route exact path='/addproperty' element={<AddProperty />} />
+        <Route exact path='/editProperty/:propertyId' element={<AddProperty />} />
         <Route exact path='/mytenants' element={<MyTenants />} />
         <Route exact path='/profile' element={<Profile />} />
         <Route exact path='/profile/pd' element={<EditPersonalData />} />

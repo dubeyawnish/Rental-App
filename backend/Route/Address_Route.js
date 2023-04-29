@@ -31,19 +31,18 @@ router.post('/addAddress', authMiddleWare, (request, response) => {
         })
 });
 
-router.put('/editAddress/:addressId', authMiddleware, (req, res) => {
-    console.log(req.body)
-    AddressModel.findByIdAndUpdate(req.params.addressId, {
-        addressLineOne: req.body.addressLineOne, addressLineTwo: req.body.addressLineTwo, city: req.body.city, state: req.body.state, zipCode: req.body.zipCode, country: req.body.country
-    }, { new: true }, function (err, docs) {
-        if (err) {
-            console.log(err)
-        }
-        else {
-            console.log("Original Doc : ", docs);
-            return res.json({ savedAddress: docs })
-        }
-    })
+router.put('/editAddress/:addressId', authMiddleWare, async (req, res) => {
+    //console.log(req.body)
+    try {
+        const result = await AddressModel.findByIdAndUpdate(req.params.addressId, {
+            addressLineOne: req.body.addressLineOne, addressLineTwo: req.body.addressLineTwo, city: req.body.city, state: req.body.state, zipCode: req.body.zipCode, country: req.body.country
+        }, { new: true });
+        return res.json({ savedAddress: result });
+    }
+    catch (err) {
+        console.log(err);
+    }
+
 })
 
 module.exports = router;

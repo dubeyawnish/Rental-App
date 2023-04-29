@@ -2,9 +2,12 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
+import {Link} from 'react-router-dom'
+
 
 
 const MyProperty = () => {
+
   const [loading, setLoading] = useState(false);
   const [properties, setProperties] = useState([]);
 
@@ -26,7 +29,8 @@ const MyProperty = () => {
     const userId = localStorage.getItem("id")
     getAllPropertiesForUser(userId)
     setLoading(true);
-  }, [])
+  }, []);
+
   return (
     <div className='container'>
       <div className='container mt-3  shadow p-3 mb-5 bg-body-tertiary rounded'>
@@ -53,7 +57,7 @@ const MyProperty = () => {
                   <p className="card-text text-muted">Rs.{property.price}.00</p>
                   <div className='d-flex justify-content-around'>
                     <a href="#" className="btn btn-primary">Details</a>
-                    <a href="#" className="btn btn-warning">Edit</a>
+                    <Link to={`/editProperty/${property._id}`} className="btn btn-warning">Edit</Link>
                     <a href="#" className="btn btn-danger">Delete</a>
                   </div>
                 </div>
