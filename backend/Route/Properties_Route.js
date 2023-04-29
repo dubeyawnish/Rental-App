@@ -85,4 +85,6 @@ router.delete('/deletepost/:propertyId', authMiddleWare, async (req, res) => {
 })
 
 
+
+
 module.exports = router;

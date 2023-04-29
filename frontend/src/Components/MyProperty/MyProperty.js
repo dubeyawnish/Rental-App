@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2';
 
 
@@ -32,18 +32,21 @@ const MyProperty = () => {
     setLoading(true);
   }, []);
 
-  const deleteProperty = (propertyId) => {
+  const deleteProperty = (propertyId ,addressId) => {
+    // console.log(addressId);
 
     Swal.fire({
       title: 'Do you want to delete the property?',
       showDenyButton: true,
-      
+
       confirmButtonText: 'Delete',
       denyButtonText: `Don't Delete`,
-    }).then((result) => {
+    }).then(async(result) => {
       setLoading(true);
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
+         const res = await axios.delete(`${API_BASE_URL}/deleteAddress/${addressId}`, CONFIG_OBJ);
+         //console.log(res);
         axios.delete(`${API_BASE_URL}/deletepost/${propertyId}`, CONFIG_OBJ)
           .then((data) => {
             setLoading(false);
@@ -63,7 +66,17 @@ const MyProperty = () => {
 
   }
 
+  const searchHandle = async (e) => {
+    setLoading(false);
+    let key = e.target.value;
+    let result = await axios.get(`${API_BASE_URL}/searchproperty?key=` + key)
+    if (result) {
+      setProperties(result.data)
+    }
+  }
+
   return (
+
     <div className='container'>
       <div className='container mt-3  shadow p-3 mb-5 bg-body-tertiary rounded'>
         <h3 className='text-center text-muted text-uppercase'>My Properties</h3>
@@ -75,7 +88,7 @@ const MyProperty = () => {
       </div> : ''}
       <h5 className='text-muted'>My Properties:{properties.length}</h5>
       <div className='my-3'>
-        <input className=" text-muted  me-2" type="search" placeholder="Search Title..." />
+        <input className=" text-muted  me-2" onChange={searchHandle} type="search" placeholder="Search Title..." />
       </div>
       <div className='row mb-3'>
         {properties.length > 0 ? properties.map((property) => {
@@ -90,7 +103,7 @@ const MyProperty = () => {
                   <div className='d-flex justify-content-around'>
                     <a href="#" className="btn btn-primary">Details</a>
                     <Link to={`/editProperty/${property._id}`} className="btn btn-warning">Edit</Link>
-                    <button onClick={()=>{deleteProperty(property._id)}} className="btn btn-danger">Delete</button>
+                    <button onClick={() => { deleteProperty(property._id, property.address) }} className="btn btn-danger">Delete</button>
                   </div>
                 </div>
               </div>
@@ -104,4 +117,4 @@ const MyProperty = () => {
   )
 }
 
-export default MyProperty
+export default MyProperty;

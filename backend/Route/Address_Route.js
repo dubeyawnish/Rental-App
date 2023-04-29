@@ -45,4 +45,14 @@ router.put('/editAddress/:addressId', authMiddleWare, async (req, res) => {
 
 })
 
+router.delete('/deleteAddress/:addressId', authMiddleWare, async (req, res) => {
+    const result = await AddressModel.findByIdAndDelete(req.params.addressId)
+    if(result){
+     res.send("deleted successfully")
+    }
+    else{
+     res.status(404).send("cannot find property with id "+ req.params.propertyId)
+    }
+ })
+
 module.exports = router;
