@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
 import {Link} from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 
 
@@ -31,6 +32,37 @@ const MyProperty = () => {
     setLoading(true);
   }, []);
 
+  const deleteProperty = (propertyId) => {
+
+    Swal.fire({
+      title: 'Do you want to delete the property?',
+      showDenyButton: true,
+      
+      confirmButtonText: 'Delete',
+      denyButtonText: `Don't Delete`,
+    }).then((result) => {
+      setLoading(true);
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        axios.delete(`${API_BASE_URL}/deletepost/${propertyId}`, CONFIG_OBJ)
+          .then((data) => {
+            setLoading(false);
+            getAllPropertiesForUser(localStorage.getItem("id"));//to get the remaining properties
+            Swal.fire(data.data, '', 'success');
+          })
+          .catch((err) => {
+            setLoading(false);
+            Swal.fire(err, '', 'success');
+          })
+
+      } else if (result.isDenied) {
+        setLoading(false);
+        Swal.fire('Property not deleted', '', 'info');
+      }
+    })
+
+  }
+
   return (
     <div className='container'>
       <div className='container mt-3  shadow p-3 mb-5 bg-body-tertiary rounded'>
@@ -58,7 +90,7 @@ const MyProperty = () => {
                   <div className='d-flex justify-content-around'>
                     <a href="#" className="btn btn-primary">Details</a>
                     <Link to={`/editProperty/${property._id}`} className="btn btn-warning">Edit</Link>
-                    <a href="#" className="btn btn-danger">Delete</a>
+                    <button onClick={()=>{deleteProperty(property._id)}} className="btn btn-danger">Delete</button>
                   </div>
                 </div>
               </div>
