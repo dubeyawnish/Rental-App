@@ -45,5 +45,19 @@ router.get('/viewAllProperties/:userId', authMiddleWare, (req, res) => {
         })
 })
 
+router.put('/editProperty/:propertyId', authMiddleWare, authRole('owner'), (req, res) => {
+    PropertiesModel.findByIdAndUpdate(req.params.propertyId, {
+        title: req.body.title, description: req.body.description, price: req.body.price, propertyImgName: req.body.imgName
+    }, { new: true }, function (err, docs) {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            
+            return res.json({ savedProperties: docs })
+        }
+    })
+})
+
 
 module.exports = router;

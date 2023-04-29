@@ -50,7 +50,7 @@ const MyProperty = () => {
                 <div className="card-body">
                   <h6 className="card-title text-muted">{property.title}</h6>
                   <p className="card-text text-muted">{property.description}</p>
-                  <p className="card-text text-muted">{property.price}</p>
+                  <p className="card-text text-muted">Rs.{property.price}.00</p>
                   <div className='d-flex justify-content-around'>
                     <a href="#" className="btn btn-primary">Details</a>
                     <a href="#" className="btn btn-warning">Edit</a>
