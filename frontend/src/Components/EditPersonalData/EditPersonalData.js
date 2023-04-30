@@ -25,6 +25,7 @@ function EditUser() {
     const { type } = useParams()
 
     const handleImgChange = (e) => {
+      //debugger;
         const img = {
             preview: URL.createObjectURL(e.target.files[0]),
             data: e.target.files[0],
@@ -70,9 +71,10 @@ function EditUser() {
 
 
     const uploadImage = async (image) => {
+      //debugger;
         let formData = new FormData()
         formData.append('file', image.imgName.data)
-        const result = await axios.post(`${API_BASE_URL}/uploadFile`, formData, CONFIG_OBJ)
+        const result = await axios.post(`${API_BASE_URL}/uploadFile`, formData)
         const request = {profileImgName : result.data.fileName}
         updatePersonalInfo(request, 'pp')
         setLoading(false);
@@ -96,7 +98,7 @@ function EditUser() {
             setImage(img)
         }
     }
-    
+
     useEffect(() => {
         getUserByuserId(userId)
     }, []);
@@ -115,12 +117,13 @@ function EditUser() {
                 const request = { addressLineOne, addressLineTwo, city, state, zipCode, country };
                 axios.post(`${API_BASE_URL}/addAddress`, request, CONFIG_OBJ)
                 .then((data)=>{
-                    debugger;
+                    //debugger;
                     const reqUp = { address: data.data.savedAddress };
                     const result = updatePersonalInfo(reqUp, type)
                 });
         }
         }else if(type === 'pp'){//check if profile img modified then call uploadImage
+          //debugger;
             const request = { imgName: image };
             uploadImage(request)
         }
