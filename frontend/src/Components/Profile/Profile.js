@@ -2,6 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Profile = () => {
+  const userId=localStorage.getItem('id');
+
+  const CONFIG_OBJ = {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token")
+    }
+  };
+
+  
   return (
     <div>
       <div className='container mt-5'>
@@ -10,9 +20,9 @@ const Profile = () => {
           <div className='col-lg-4 col-md-4 col-sm-12 mb-4  '>
             <div className='border '>
               <div className='d-flex m-3'>
-                <div className='me-2'>
+                <Link to={`/user/profile/pp/${userId}`} className='me-2'>
                   <i className=" fw-bold fa-solid fa-pen-to-square"></i>
-                </div>
+                </Link>
                 <div>
                   <img src='https://www.istockphoto.com/resources/images/PhotoFTLP/P2-APR-iStock-1309110294.jpg' height={200} width={280} alt='img' />
                 </div>
@@ -35,7 +45,7 @@ const Profile = () => {
                 <div className=''>
                   <h5 className='mt-3 ms-3'>Personal Details</h5>
                 </div>
-                <Link to='/profile/pd' className='me-3'>
+                <Link to={`/user/profile/pd/${userId}`} className='me-3'>
                   <button type='button' className=' mt-2 btn btn-warning'><i className="fa-regular fa-pen-to-square"></i> Edit</button>
                 </Link>
 
@@ -77,7 +87,7 @@ const Profile = () => {
                 <div className=''>
                   <h5 className='mt-3 ms-3'>Address Details</h5>
                 </div>
-                <Link to ='/profile/address' className='me-3'>
+                <Link to={`/user/profile/ad/${userId}`}  className='me-3'>
                   <button type='button' className=' mt-2 btn btn-warning'><i className="fa-regular fa-pen-to-square"></i> Edit</button>
                 </Link>
 

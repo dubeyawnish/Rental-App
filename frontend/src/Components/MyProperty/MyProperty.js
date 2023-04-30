@@ -33,7 +33,7 @@ const MyProperty = () => {
   }, []);
 
   const deleteProperty = (propertyId ,addressId) => {
-    // console.log(addressId);
+    //cd console.log(addressId);
 
     Swal.fire({
       title: 'Do you want to delete the property?',
