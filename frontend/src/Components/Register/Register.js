@@ -3,8 +3,10 @@ import { API_BASE_URL } from '../../config';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 import './Register.css'
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate=useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -25,6 +27,7 @@ const Register = () => {
             icon: 'success',
             title: 'Successfully Registered'
           });
+          navigate('/login');
 
         }
         setFirstName('');

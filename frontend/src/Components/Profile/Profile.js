@@ -66,7 +66,7 @@ const Profile = () => {
                   <i className=" fw-bold fa-solid fa-pen-to-square"></i>
                 </Link>
                 <div>
-                  <img src={`${API_BASE_URL}/files/${profileImg}`} height={200} width={280} alt='img' />
+                  <img src={`${API_BASE_URL}/files/${profileImg}`} className='img-fluid'  alt='img' />
                 </div>
               </div>
 

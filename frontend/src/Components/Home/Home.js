@@ -17,7 +17,7 @@ const Home = () => {
                     </div>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src="https://media.istockphoto.com/id/1396858846/photo/american-traditional-colonial-house.jpg?b=1&s=170667a&w=0&k=20&c=QegK9brcDlD7ZSo20c_RAkw7R2pqYYJlgRo0HuMzzjk=" className="d-block w-100" alt="..." />
+                            <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" className="d-block w-100" alt="..." />
                             <div className="carousel-caption d-none d-md-block">
                                 <h5>First slide label</h5>
                                 <p>Some representative placeholder content for the first slide.</p>
