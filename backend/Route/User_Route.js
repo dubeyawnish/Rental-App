@@ -12,7 +12,7 @@ const router = express.Router();
 const UserModel = mongoose.model('UserModel');
 
 router.post('/signup', (req, res) => {
-    const { firstName, lastName, email, phone, password, role } = req.body;
+    const { firstName, lastName, email, phone, password,imgName, role } = req.body;
     if (!firstName || !lastName || !email || !phone || !password) {
         return res.status(404).json({ error: 'One or more mandatory fields are empty' });
 
@@ -25,7 +25,7 @@ router.post('/signup', (req, res) => {
             }
             bcrypt.hash(password, 16)
                 .then((hashedpassword) => {
-                    const user = new UserModel({ firstName: firstName, lastName: lastName, phone: phone, email: email, password: hashedpassword, role: role })
+                    const user = new UserModel({ firstName: firstName, lastName: lastName, phone: phone, email: email, password: hashedpassword, profileImgName: imgName,role: role })
                     user.save()
                         .then((newUser) => {
                             res.status(201).json({ result: "User registered successfully" });

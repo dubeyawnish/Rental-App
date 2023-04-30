@@ -22,6 +22,9 @@ const userSchema= new mongoose.Schema({
         type:String,
          required:true
     },
+    profileImgName: {
+        type: String
+    },
     role:{
         type:String,
         default:"tenant"

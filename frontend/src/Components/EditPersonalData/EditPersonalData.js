@@ -96,6 +96,7 @@ function EditUser() {
             setImage(img)
         }
     }
+    
     useEffect(() => {
         getUserByuserId(userId)
     }, []);

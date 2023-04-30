@@ -115,8 +115,9 @@ const AddProperty = () => {
           title: 'Property not modified'
 
         });
-        navigate("/myproperty")
+       
       }
+      navigate("/myproperty")
     }
 
     else {
@@ -137,9 +138,10 @@ const AddProperty = () => {
           title: 'Property not added'
 
         });
-        navigate("/myproperty")
+        
 
       }
+      navigate("/myproperty")
 
 
     }
