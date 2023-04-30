@@ -1,6 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import { API_BASE_URL } from '../../config';
+import { useEffect } from 'react';
 
 const DetailProperty = () => {
+    const{propertyId}=useParams();
+    const [property,setProperty] =useState({});
+    const [address,setAddress]=useState({});
+    //console.log(propertyId);
+    const getDetailProperty=async()=>{
+        const result= await axios.get(`${API_BASE_URL}/viewProperties/${propertyId}`);
+        console.log(result.data);
+        setProperty(result.property);
+        setAddress(result.property.address)
+
+
+    }
+    useEffect(() => {
+     getDetailProperty();
+    }, [])
+    
     return (
         <div className='container'>
             <div className='container mt-3  shadow p-3 mb-1 bg-body-tertiary rounded'>

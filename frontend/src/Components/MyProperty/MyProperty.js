@@ -101,7 +101,7 @@ const MyProperty = () => {
                   <p className="card-text text-muted">{property.description}</p>
                   <p className="card-text text-muted">Rs.{property.price}.00</p>
                   <div className='d-flex justify-content-around'>
-                    <Link to='/detailproperty' className="btn btn-primary">Details</Link>
+                    <Link to={`/detailproperty/${property._id}`} className="btn btn-primary">Details</Link>
                     <Link to={`/editProperty/${property._id}`} className="btn btn-warning">Edit</Link>
                     <button onClick={() => { deleteProperty(property._id, property.address) }} className="btn btn-danger">Delete</button>
                   </div>

@@ -31,7 +31,7 @@ function App() {
         <Route exact path='/profile' element={<Profile />} />
         <Route exact path='/user/profile/:type/:userId' element={<EditPersonalData />} />
         <Route exact path='/profile/address' element={<EditAdress />} />
-        <Route exact path='/detailproperty' element={<DetailProperty />} />
+        <Route exact path='/detailproperty/:propertyId' element={<DetailProperty />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/signup' element={<Register />} />
       </Routes>
