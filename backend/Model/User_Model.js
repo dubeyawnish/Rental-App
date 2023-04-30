@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+const { ObjectId } = mongoose.Schema.Types;
 
 const userSchema= new mongoose.Schema({
     firstName:{
@@ -24,6 +25,11 @@ const userSchema= new mongoose.Schema({
     role:{
         type:String,
         default:"tenant"
+    },
+   
+    address:{
+        type:ObjectId ,
+        ref:"AddressModel"
     }
 
 });

@@ -17,7 +17,7 @@ router.post('/signup', (req, res) => {
         return res.status(404).json({ error: 'One or more mandatory fields are empty' });
 
     }
-    
+
     UserModel.findOne({ email: email })
         .then((userInDb) => {
             if (userInDb) {
@@ -25,7 +25,7 @@ router.post('/signup', (req, res) => {
             }
             bcrypt.hash(password, 16)
                 .then((hashedpassword) => {
-                    const user = new UserModel({ firstName: firstName, lastName: lastName, phone: phone, email: email, password: hashedpassword, role:role })
+                    const user = new UserModel({ firstName: firstName, lastName: lastName, phone: phone, email: email, password: hashedpassword, role: role })
                     user.save()
                         .then((newUser) => {
                             res.status(201).json({ result: "User registered successfully" });
@@ -87,6 +87,43 @@ router.post('/login', (req, res) => {
         })
 
 })
+
+router.put('/user/profile/:type/:userId', async (req, res) => {
+    //console.log(req)
+    let dataToUpdate;
+    if (req.params.type == 'ad') {
+        dataToUpdate = { address: req.body.address };
+    }
+    if (req.params.type == 'pd' || req.params.type == 'pp') {
+        dataToUpdate = req.body;
+    }
+
+    try {
+        const docs = await UserModel.findByIdAndUpdate(req.params.userId, dataToUpdate, { new: true })
+        return res.json({ user: docs })
+    }
+    catch (err) {
+        return res.status(400).json({ err: "Incorrect data" })
+
+    }
+})
+
+
+router.get('/user/profile/:userId', (req, res) => {
+    UserModel.findOne({ _id: req.params.userId })
+        .select("-password")
+        .populate("address")
+        .then((userFound) => {
+            return res.json({ user: userFound })
+        })
+        .catch((err) => {
+            return res.status(400).json({ err: "User was not found!" })
+        })
+});
+
+
+
+
 
 
 
