@@ -25,6 +25,10 @@ const propertiesSchema = new mongoose.Schema({
     address: {
         type: ObjectId,
         ref: "AddressModel"
+    },
+    isRented: { 
+        type: Boolean,
+        default: false 
     }
     
 });

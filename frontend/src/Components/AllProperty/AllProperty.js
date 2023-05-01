@@ -20,7 +20,7 @@ const AllProperty = () => {
                   <p className="card-text text-muted">description</p>
                   <p className="card-text text-muted">price</p>
                   <div className='d-flex justify-content-around'>
-                  <button type="button" class="btn btn-outline-primary"><i className="fa-solid fa-circle-info"></i> View Details</button>
+                  <button type="button" className="btn btn-outline-primary"><i className="fa-solid fa-circle-info"></i> View Details</button>
                     
                   </div>
                 </div>
