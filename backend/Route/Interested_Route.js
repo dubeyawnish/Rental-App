@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 const IntrestedModel = mongoose.model("IntrestedModel");
-const {authMiddleWare,authRole} =require('../Middleware/ProtectedRoute');
+const { authMiddleWare, authRole } = require('../Middleware/ProtectedRoute');
 
 router.post('/intrested', authMiddleWare, (req, res) => {
     const { userId, propertyId } = req.body
@@ -34,4 +34,4 @@ router.post('/intrested', authMiddleWare, (req, res) => {
 
 
 
-module.exports=router;
+module.exports = router;
