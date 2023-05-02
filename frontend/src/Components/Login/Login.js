@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 
@@ -92,7 +92,7 @@ const Login = () => {
 
           </form>
           <div>
-            <p className='pt-2'>Newuser?<a href=''>Click here to register</a> <a href=''>forgot Password</a></p>
+            <p className='pt-2'>Newuser?<Link to={'/signup'}>Click here to register</Link> <a href=''>forgot Password</a></p>
           </div>
         </div>
       </div>

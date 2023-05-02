@@ -11,6 +11,7 @@ const app=express();
 require('./Model/User_Model');
 require('./Model/Address_Model');
 require('./Model/Property_Model');
+require('./Model/Interested_Model');
 
 
 app.use(cors());

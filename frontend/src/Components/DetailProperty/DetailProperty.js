@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate ,Link} from 'react-router-dom'
 import axios from 'axios'
 import { API_BASE_URL } from '../../config';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const DetailProperty = () => {
+
+    const user=useSelector(state =>state.user);
     const navigate = useNavigate();
     const { propertyId } = useParams();
     const [property, setProperty] = useState({});
@@ -141,6 +144,8 @@ const DetailProperty = () => {
 
                         </div>
                         <hr className='text-muted' />
+                        {user.user.role !== 'owner' ? <button  className='btn btn-primary'>Contact Owner</button> : ""}
+                        {user.user.role === 'owner' ? <Link to={`/editProperty/${property._id}`} className="btn btn-info px-4">Edit</Link> : ""}
 
                     </div>
 
