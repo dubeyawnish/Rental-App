@@ -12,6 +12,7 @@ require('./Model/User_Model');
 require('./Model/Address_Model');
 require('./Model/Property_Model');
 require('./Model/Interested_Model');
+require('./Model/Tenant_Model');
 
 
 app.use(cors());
@@ -22,6 +23,7 @@ app.use(require('./Route/File_Route'))
 app.use(require('./Route/Properties_Route'))
 app.use(require('./Route/Address_Route'))
 app.use(require('./Route/Interested_Route'))
+app.use(require('./Route/Tenant_Route'))
 
 const PORT=4000 || process.env.PORT;
 
