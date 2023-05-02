@@ -95,6 +95,26 @@ router.get('/viewAllProperties', (req, res) => {
         })
 })
 
+router.delete('/deleteIntrestedTenant/:propertyId', async (req, res) => {
+    const result = await IntrestedModel.deleteMany({ property: { $in: req.params.propertyId } })
+    if (result.deletedCount > 0) {
+        res.send(`deleted ${result.deletedCount} properties successfully`)
+    }
+    else {
+        res.status(404).send("cannot find property with id ")
+    }
+})
+
+router.delete('/deleteIntrestedTenantById/:tenantId', async (req, res) => {
+    const result = await IntrestedModel.deleteMany({ _id: { $in: req.params.tenantId } })
+    if (result.deletedCount > 0) {
+        res.status(200).send(`deleted ${result.deletedCount} tenant successfully`)
+    }
+    else {
+        res.status(404).send("cannot find tenant with id ")
+    }
+})
+
 
 
 
