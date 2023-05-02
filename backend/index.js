@@ -21,6 +21,7 @@ app.use(require('./Route/User_Route'))
 app.use(require('./Route/File_Route'))
 app.use(require('./Route/Properties_Route'))
 app.use(require('./Route/Address_Route'))
+app.use(require('./Route/Interested_Route'))
 
 const PORT=4000 || process.env.PORT;
 
