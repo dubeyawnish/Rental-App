@@ -46,9 +46,9 @@ const DetailProperty = () => {
     const delTenant = async (tenantId) => {
         const deleteTenant = await axios.delete(`${API_BASE_URL}/deleteIntrestedTenantById/${tenantId}`, CONFIG_OBJ)
         if (deleteTenant.status === 200) {
-          getTenantsList(propertyId);
+            getTenantsList(propertyId);
         }
-      }
+    }
 
     return (
         <div className='container'>
@@ -196,7 +196,7 @@ const DetailProperty = () => {
                                     <td>{tenant.user.email}</td>
                                     <td>{tenant.user.phone}</td>
                                     <td><button className='btn btn-sm btn-primary' >Add</button></td>
-                                    <td><button className='btn btn-sm btn-danger' onClick={()=>{delTenant(tenant._id)}} ><i class="fa-solid fa-circle-xmark"></i></button></td>
+                                    <td><button className='btn btn-sm btn-danger' onClick={() => { delTenant(tenant._id) }} ><i class="fa-solid fa-circle-xmark"></i></button></td>
                                 </tr>)
                             })
                             }
