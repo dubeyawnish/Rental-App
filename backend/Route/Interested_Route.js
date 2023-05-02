@@ -34,7 +34,7 @@ router.post('/intrested', authMiddleWare, (req, res) => {
 
 router.get('/intrestedUsers/:propertyId', authMiddleWare, (req, res) => {
     IntrestedModel.find({ property: { $in: req.params.propertyId } })
-        .populate("user", "_id fname lname email phone")
+        .populate("user", "_id firstName lastName email phone")
         .then((userFound) => {
             return res.json({ allInterestedTenants: userFound })
         })

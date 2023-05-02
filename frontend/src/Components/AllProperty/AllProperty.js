@@ -4,14 +4,17 @@ import { API_BASE_URL } from '../../config';
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import { useParams } from 'react-router-dom';
 
 
 const AllProperty = () => {
   const user = useSelector(state => state.user);
 
 
+
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [tenants, setTenants] = useState([])
 
   const getAllProperty = async () => {
     const result = await axios.get(`${API_BASE_URL}/viewAllProperties`);
@@ -22,6 +25,7 @@ const AllProperty = () => {
 
   useEffect(() => {
     getAllProperty();
+   
     setLoading(true);
 
   }, []);
@@ -54,6 +58,8 @@ const AllProperty = () => {
     }
 
   }
+
+ 
 
 
 
@@ -95,6 +101,8 @@ const AllProperty = () => {
           }
         </div>
       </div>
+
+      
 
     </div>
   )

@@ -8,11 +8,22 @@ import { useSelector } from 'react-redux';
 const DetailProperty = () => {
 
     const user=useSelector(state =>state.user);
+  
     const navigate = useNavigate();
     const { propertyId } = useParams();
+    const [tenants,setTenants] =useState([]);
     const [property, setProperty] = useState({});
     const [address, setAddress] = useState({});
     //console.log(propertyId);
+
+    const CONFIG_OBJ = {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+      };
+
+
     const getDetailProperty = async () => {
         const result = await axios.get(`${API_BASE_URL}/viewProperties/${propertyId}`);
         console.log(result.data);
@@ -21,8 +32,13 @@ const DetailProperty = () => {
 
 
     }
+    const getTenantsList = async (propertyId) => {
+        const result = await axios.get(`${API_BASE_URL}/intrestedUsers/${propertyId}`, CONFIG_OBJ)
+        setTenants(result.data.allInterestedTenants)
+      }
     useEffect(() => {
         getDetailProperty();
+        getTenantsList(propertyId);
     }, [])
     const func = () => {
         navigate(-1);// -1 is used for go to previous page 
@@ -151,6 +167,35 @@ const DetailProperty = () => {
 
                 </div>
             </div>
+
+            {tenants.length > 0 ? <div>
+        {user.user.role === 'owner' ? <h4>Intrested Tenants</h4> : ""}
+        {user.user.role === 'owner' ? <div className='table-responsive'><table className="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Action</th>
+              <th scope="col">Decline</th>
+            </tr>
+          </thead>
+          <tbody >
+            {tenants.map((tenant, index) => {
+              return (<tr key={tenant.user._id}>
+                <th scope="row">{index + 1}</th>
+                <td>{tenant.user.firstName} {tenant.user.lastName}</td>
+                <td>{tenant.user.email}</td>
+                <td>{tenant.user.phone}</td>
+                <td><button className='btn btn-sm btn-primary' >Add</button></td>
+                <td><button className='btn btn-sm btn-danger' ><i class="fa-solid fa-circle-xmark"></i></button></td>
+              </tr>)
+            })
+            }
+          </tbody>
+        </table></div> : ""}
+      </div> : ""}
         </div>
     )
 }
