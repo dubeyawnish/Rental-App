@@ -32,6 +32,18 @@ router.post('/intrested', authMiddleWare, (req, res) => {
 });
 
 
+router.get('/intrestedUsers/:propertyId', authMiddleWare, (req, res) => {
+    IntrestedModel.find({ property: { $in: req.params.propertyId } })
+        .populate("user", "_id fname lname email phone")
+        .then((userFound) => {
+            return res.json({ allInterestedTenants: userFound })
+        })
+        .catch((err) => {
+            return res.status(400).json({ err: "No matching records found" })
+        })
+})
+
+
 
 
 module.exports = router;
