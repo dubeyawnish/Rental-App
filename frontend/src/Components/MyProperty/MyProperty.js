@@ -32,7 +32,7 @@ const MyProperty = () => {
     setLoading(true);
   }, []);
 
-  const deleteProperty = (propertyId ,addressId) => {
+  const deleteProperty = (propertyId, addressId) => {
     //cd console.log(addressId);
 
     Swal.fire({
@@ -41,12 +41,12 @@ const MyProperty = () => {
 
       confirmButtonText: 'Delete',
       denyButtonText: `Don't Delete`,
-    }).then(async(result) => {
+    }).then(async (result) => {
       setLoading(true);
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-         const res = await axios.delete(`${API_BASE_URL}/deleteAddress/${addressId}`, CONFIG_OBJ);
-         //console.log(res);
+        const res = await axios.delete(`${API_BASE_URL}/deleteAddress/${addressId}`, CONFIG_OBJ);
+        //console.log(res);
         axios.delete(`${API_BASE_URL}/deletepost/${propertyId}`, CONFIG_OBJ)
           .then((data) => {
             setLoading(false);
@@ -97,7 +97,10 @@ const MyProperty = () => {
               <div className="card" >
                 <img src={`${API_BASE_URL}/files/${property.propertyImgName}`} height={300} className="card-img-top" alt="..." />
                 <div className="card-body">
-                  <h6 className="card-title text-muted">{property.title}</h6>
+                  <div className='d-flex justify-content-between'>
+                    <h6 className="card-title text-muted">{property.title}</h6>
+                    {property.isRented === true ? <h6 className='bg-success border border-primary p-1 text-white'>Rented</h6> : ""}
+                  </div>
                   <p className="card-text text-muted">{property.description}</p>
                   <p className="card-text text-muted">Rs.{property.price}.00</p>
                   <div className='d-flex justify-content-around'>

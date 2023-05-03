@@ -4,6 +4,7 @@ import axios from 'axios'
 import { API_BASE_URL } from '../../config';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 const DetailProperty = () => {
 
@@ -43,11 +44,43 @@ const DetailProperty = () => {
     const func = () => {
         navigate(-1);// -1 is used for go to previous page 
     }
-    const delTenant = async (tenantId) => {
+    const delTenant = async (tenantId) => { // this function deleted tenenat from this property now we can again add from all property page
         const deleteTenant = await axios.delete(`${API_BASE_URL}/deleteIntrestedTenantById/${tenantId}`, CONFIG_OBJ)
         if (deleteTenant.status === 200) {
             getTenantsList(propertyId);
         }
+    }
+
+
+    const updateRentStatus = async (propertyId, isRented) => {
+        const request = { isRented: isRented }
+        return axios.put(`${API_BASE_URL}/myTenants/${propertyId}`, request, CONFIG_OBJ)
+    }
+
+    const removeTenant = async (propertyId) => {  // this will remove tenenat detail from detail property page and we can not add same property agian from same userid paasswd
+        return axios.delete(`${API_BASE_URL}/deleteIntrestedTenant/${propertyId}`)
+    }
+
+    const addTenant = async (tenantId) => {
+        const request = { userId: tenantId, propertyId }
+        const addTenantDetails = await axios.post(`${API_BASE_URL}/addTenant`, request, CONFIG_OBJ)
+        if (addTenantDetails.status === 201) {
+            await updateRentStatus(propertyId, true)
+            await removeTenant(propertyId)
+            Swal.fire({
+                icon: 'success',
+                title: 'You have successfully rented the property',
+                text: 'We will email you once Refresh is completed!'
+            });
+            getTenantsList(propertyId)
+        } else {
+            Swal.fire({
+                icon: 'danger',
+                title: 'Tenant not added',
+                text: 'We will email you once Refresh is completed!'
+            });
+        }
+
     }
 
     return (
@@ -195,7 +228,7 @@ const DetailProperty = () => {
                                     <td>{tenant.user.firstName} {tenant.user.lastName}</td>
                                     <td>{tenant.user.email}</td>
                                     <td>{tenant.user.phone}</td>
-                                    <td><button className='btn btn-sm btn-primary' >Add</button></td>
+                                    <td><button className='btn btn-sm btn-primary' onClick={() => { addTenant(tenant._id) }} >Add</button></td>
                                     <td><button className='btn btn-sm btn-danger' onClick={() => { delTenant(tenant._id) }} ><i class="fa-solid fa-circle-xmark"></i></button></td>
                                 </tr>)
                             })
