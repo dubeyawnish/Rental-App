@@ -21,4 +21,6 @@ router.post('/addTenant', authMiddleWare, (req, res) => {
             return res.status(400).json({ error: "Tenant not added" })
         })
 }
-)
+);
+
+module.exports=router;

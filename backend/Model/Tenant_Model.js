@@ -30,4 +30,4 @@ const tenantSchema = new mongoose.Schema({
     }
 });
 
-mongoose.Model("TenantModel",(tenantSchema))
+mongoose.model("TenantModel",(tenantSchema))

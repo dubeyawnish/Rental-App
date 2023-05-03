@@ -86,13 +86,26 @@ router.delete('/deletepost/:propertyId', authMiddleWare, async (req, res) => {
 
 router.get('/viewAllProperties', (req, res) => {
     PropertiesModel.find({ isRented: false })
-       
+
         .then((propertyFound) => {
             return res.json({ allProperties: propertyFound })
         })
         .catch((err) => {
             return res.status(400).json({ err: "Property was not found!" })
         })
+})
+
+router.put('/myTenants/:propertyId', async (req, res) => {
+
+    try {
+        const docs = await PropertiesModel.findByIdAndUpdate(req.params.propertyId, { isRented: req.body.isRented }, { new: true })
+        return res.json({ savedProperties: docs })
+
+    }
+    catch (err) {
+
+        console.log(err);
+    }
 })
 
 
