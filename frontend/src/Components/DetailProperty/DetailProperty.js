@@ -27,7 +27,7 @@ const DetailProperty = () => {
 
     const getDetailProperty = async () => {
         const result = await axios.get(`${API_BASE_URL}/viewProperties/${propertyId}`);
-        console.log(result.data);
+        //console.log(result.data);
         setProperty(result.data.property);
         setAddress(result.data.property.address)
 
@@ -57,11 +57,12 @@ const DetailProperty = () => {
         return axios.put(`${API_BASE_URL}/myTenants/${propertyId}`, request, CONFIG_OBJ)
     }
 
-    const removeTenant = async (propertyId) => {  // this will remove tenenat detail from detail property page and we can not add same property agian from same userid paasswd
+    const removeTenant = async (propertyId) => {  // this will delete the tenant from detail property page
         return axios.delete(`${API_BASE_URL}/deleteIntrestedTenant/${propertyId}`)
     }
 
     const addTenant = async (tenantId) => {
+        debugger;
         const request = { userId: tenantId, propertyId }
         const addTenantDetails = await axios.post(`${API_BASE_URL}/addTenant`, request, CONFIG_OBJ)
         if (addTenantDetails.status === 201) {
@@ -228,7 +229,7 @@ const DetailProperty = () => {
                                     <td>{tenant.user.firstName} {tenant.user.lastName}</td>
                                     <td>{tenant.user.email}</td>
                                     <td>{tenant.user.phone}</td>
-                                    <td><button className='btn btn-sm btn-primary' onClick={() => { addTenant(tenant._id) }} >Add</button></td>
+                                    <td><button className='btn btn-sm btn-primary' onClick={() => { addTenant(tenant.user._id) }} >Add</button></td>
                                     <td><button className='btn btn-sm btn-danger' onClick={() => { delTenant(tenant._id) }} ><i class="fa-solid fa-circle-xmark"></i></button></td>
                                 </tr>)
                             })

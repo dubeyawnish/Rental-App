@@ -18,7 +18,7 @@ const AllProperty = () => {
 
   const getAllProperty = async () => {
     const result = await axios.get(`${API_BASE_URL}/viewAllProperties`);
-    console.log(result);
+    //console.log(result);
     setProperties(result.data.allProperties);
     setLoading(false);
   }

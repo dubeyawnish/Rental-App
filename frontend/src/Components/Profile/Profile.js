@@ -31,7 +31,7 @@ const Profile = () => {
 
   const getProfile = async (userId) => {
     const profileData = await axios.get(`${API_BASE_URL}/user/profile/${userId}`, CONFIG_OBJ);
-    console.log(profileData);
+    //console.log(profileData);
     setRole(profileData.data.user.role)
     setFirstName(profileData.data.user.firstName)
     setLastName(profileData.data.user.lastName)

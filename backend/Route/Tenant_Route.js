@@ -1,6 +1,7 @@
 const express=require('express')
 const mongoose=require('mongoose')
 const TenantsModel=mongoose.model("TenantModel");
+const PropertiesModel=mongoose.model("PropertiesModel")
 
 const { authMiddleWare, authRole } = require('../Middleware/ProtectedRoute');
 const router=express.Router();
@@ -26,13 +27,15 @@ router.post('/addTenant', authMiddleWare, (req, res) => {
 router.get('/myTenants', authMiddleWare, async (req, res) => {
     const user = req.dbUser;
     let tenantList = new Array()
-    //console.log(user)
+   // console.log(user)
     const myProps = await PropertiesModel.find({ user: { $in: user._id } });
+    //console.log(myProps);
 
     for (let i = 0; i < myProps.length; i++) {
         const tenantData = await TenantsModel.find({ property: { $in: myProps[i]._id } })
             .populate("user", "_id firstName lastName email phone profileImgName")
-            .populate("property");
+            .populate("property" );
+           // console.log(tenantData);
         if (tenantData[0] != null) {
             tenantList.push(tenantData[0])
         }
