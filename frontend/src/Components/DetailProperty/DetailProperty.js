@@ -62,7 +62,7 @@ const DetailProperty = () => {
     }
 
     const addTenant = async (tenantId) => {
-        debugger;
+       // debugger;
         const request = { userId: tenantId, propertyId }
         const addTenantDetails = await axios.post(`${API_BASE_URL}/addTenant`, request, CONFIG_OBJ)
         if (addTenantDetails.status === 201) {

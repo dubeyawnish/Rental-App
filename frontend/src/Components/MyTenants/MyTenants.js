@@ -44,9 +44,7 @@ function MyTenants() {
               </div>
               <hr />
               <div >
-                {/* <h5 className="card-title">Property Details</h5>
-                <p className="card-text"><b>Type:</b> {tenant.property.title}</p>
-                <p className="card-text"><b>Address:</b> {tenant.property.description}</p> */}
+                
                 <button  className="btn btn-primary">Edit rental details</button>
               </div>
             </div>

@@ -1,5 +1,9 @@
 import React from 'react'
 import './Home.css'
+import pic1 from '../Image/h1.jpg'
+import pic2 from '../Image/h2.jpg'
+import pic3 from '../Image/h3.jpg'
+
 
 const Home = () => {
     return (
@@ -17,21 +21,21 @@ const Home = () => {
                     </div>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" className="d-block w-100" alt="..." />
+                            <img src={pic1} className="d-block w-100" alt="..." />
                             <div className="carousel-caption d-none d-md-block">
                                 <h5>First slide label</h5>
                                 <p>Some representative placeholder content for the first slide.</p>
                             </div>
                         </div>
                         <div className="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fEhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" className="d-block w-100" alt="..." />
+                            <img src={pic2} className="d-block w-100" alt="..." />
                             <div className="carousel-caption d-none d-md-block">
                                 <h5>Second slide label</h5>
                                 <p>Some representative placeholder content for the second slide.</p>
                             </div>
                         </div>
                         <div className="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1598228723793-52759bba239c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fEhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" className="d-block w-100" alt="..." />
+                            <img src={pic3} className="d-block w-100" alt="..." />
                             <div className="carousel-caption d-none d-md-block">
                                 <h5>Third slide label</h5>
                                 <p>Some representative placeholder content for the third slide.</p>
