@@ -58,4 +58,15 @@ router.get('/myTenants/:userId', authMiddleWare, (req, res) => {
         })
 })
 
+
+router.delete('/deleteTenant/:tenantId', async (req, res) => {
+    const result = await TenantsModel.deleteMany({ _id: { $in: req.params.tenantId } })
+    if (result.deletedCount > 0) {
+        res.status(200).send(`deleted ${result.deletedCount} tenant successfully`)
+    }
+    else {
+        res.status(404).send("cannot find tenant with id ")
+    }
+})
+
 module.exports=router;
