@@ -14,6 +14,7 @@ import Profile from './Components/Profile/Profile';
 import EditPersonalData from './Components/EditPersonalData/EditPersonalData';
 import EditAdress from './Components/EditAddress/EditAdress';
 import DetailProperty from './Components/DetailProperty/DetailProperty';
+import RentalDetail from './Components/RentalDetail/RentalDetail';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route exact path='/profile' element={<Profile />} />
         <Route exact path='/user/profile/:type/:userId' element={<EditPersonalData />} />
         <Route exact path='/profile/address' element={<EditAdress />} />
+        <Route exact path='/rentalDetails/:userId' element={<RentalDetail />} />
         <Route exact path='/detailproperty/:propertyId' element={<DetailProperty />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/signup' element={<Register />} />
