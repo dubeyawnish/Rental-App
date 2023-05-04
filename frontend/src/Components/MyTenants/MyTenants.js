@@ -22,7 +22,7 @@ function MyTenants() {
 
   const getAllTenants = async () => {
     const tenantsData = await axios.get(`${API_BASE_URL}/myTenants`, CONFIG_OBJ);
-    console.log(tenantsData);
+    //console.log(tenantsData);
     setTenants(tenantsData.data.allTenants)
   }
 
@@ -45,7 +45,7 @@ function MyTenants() {
               <hr />
               <div >
                 
-                <button  className="btn btn-primary">Edit rental details</button>
+                <button onClick={() => navToRentDetails(tenant._id)}  className="btn btn-primary">Edit rental details</button>
               </div>
             </div>
           </div>)

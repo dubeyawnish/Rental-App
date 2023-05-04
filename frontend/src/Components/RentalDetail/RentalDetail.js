@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import './RentalDetail'
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2';
@@ -69,7 +69,7 @@ function RentalDetails() {
                   <div className='row'>
                     <div className='text-center col-md-3 col-sm-12 d-flex flex-column justify-center'>
                       <h5 className='fw-semibold text-uppercase'>Name</h5>
-                      <h6 className='fw-bolder'>{tenant && tenant.fname} {tenant && tenant.lname}</h6>
+                      <h6 className='fw-bolder'>{tenant && tenant.firstName} {tenant && tenant.lastName}</h6>
                     </div>
 
                     <div className='text-center col-md-3 col-sm-12 d-flex flex-column justify-center'>

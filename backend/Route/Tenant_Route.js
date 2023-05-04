@@ -44,4 +44,18 @@ router.get('/myTenants', authMiddleWare, async (req, res) => {
     return res.json({ allTenants: tenantList })
 })
 
+
+
+router.get('/myTenants/:userId', authMiddleWare, (req, res) => {
+    TenantsModel.findOne({ _id: req.params.userId })
+        .populate("user", "_id firstName lastName email phone profileImgName")
+        .populate("property")
+        .then((tenantFound) => {
+            return res.json({ tenant: tenantFound })
+        })
+        .catch((err) => {
+            return res.status(400).json({ err: "Tenant was not found!" })
+        })
+})
+
 module.exports=router;
