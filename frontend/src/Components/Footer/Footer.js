@@ -27,12 +27,12 @@ const Footer = () => {
                 <div className=' row   '>
                     <div className='col-lg-3 col-md-3 col-sm-12 '>
                         <div className='mt-5'>
-                            <h6 className='footer-center text-uppercase'>Obify Consulting</h6>
+                            <h6 className='footer-center text-uppercase'>House Renatl Application</h6>
 
                         </div>
 
                         <div className='mt-4 '>
-                            <p className='text-cen'>lorem35 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam vitae elit non lobortis. Proin tempor, justo eu iaculis mattis, tellus ligula rhoncus </p>
+                            <p className='text-cen'>A house rental application project could involve creating a web application that allows potential renters to fill out and submit their rental application online. </p>
                         </div>
 
                     </div>
@@ -80,7 +80,7 @@ const Footer = () => {
                         </div>
                         <div className='mt-3 footer-center'>
                             <p ><i className="me-1 fa-solid fa-house"></i>Prayagraj , Uttar Pradesh 211002</p>
-                            <p><i className="me-1 fa-solid fa-envelope"></i>ObifyConsulting.com</p>
+                            <p><i className="me-1 fa-solid fa-envelope"></i>Houeserental.com</p>
                             <p><i className="me-1 fa-solid fa-phone"></i>7894562845</p>
                             <p><i className="me-1 fa-solid fa-print"></i>4579554455</p>
                         </div>
@@ -95,7 +95,7 @@ const Footer = () => {
 
             <div className='container-fluid text-white bg-blackish  d-flex justify-content-center  ' style={{ minHeight: '4rem' }}>
                 <p className='mt-3'>©2023 Copyright:</p>
-                <a className='mt-3 text-white' href='#'>ObifyConsulting.com</a>
+                <a className='mt-3 text-white' href='#'>Houserntal.com</a>
 
             </div>
         </div>

@@ -57,7 +57,7 @@ function RentalDetails() {
     <div>
       <div className='top-banner'>
         <h3 className='text-center mt-3 shadow-sm' style={{ color: "F62459" }}> Manage Tenant</h3>
-        <img src='https://images.unsplash.com/photo-1505691723518-36a5ac3be353?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80' />
+        <img src='https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' />
       </div>
       <div className='container mb-3'>
         <div className='row'>

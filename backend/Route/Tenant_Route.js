@@ -42,7 +42,7 @@ router.get('/myTenants', authMiddleWare, async (req, res) => {
     }
 
     return res.json({ allTenants: tenantList })
-})
+});
 
 
 
@@ -56,7 +56,7 @@ router.get('/myTenants/:userId', authMiddleWare, (req, res) => {
         .catch((err) => {
             return res.status(400).json({ err: "Tenant was not found!" })
         })
-})
+});
 
 
 router.delete('/deleteTenant/:tenantId', async (req, res) => {
@@ -67,6 +67,6 @@ router.delete('/deleteTenant/:tenantId', async (req, res) => {
     else {
         res.status(404).send("cannot find tenant with id ")
     }
-})
+});
 
 module.exports=router;
