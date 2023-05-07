@@ -22,7 +22,7 @@ Based on the role, the owner and tenant will have limited access to the platform
 > - JSON Web Tokens (JWT) for user authentication
 
 ## Contributing
-Contributions are welcome! Please feel free to submit a pull request or create an issue if you find any bugs or want to add a new feature.
+Contributions are welcome ! Please feel free to submit a pull request or create an issue if you find any bugs or want to add a new feature.
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
