@@ -2,6 +2,7 @@ const express=require('express');
 const cors=require('cors');
 const Connection = require('./database/db');
 global.__basedir = __dirname;
+const path = require("path");
 
 
 const app=express();
