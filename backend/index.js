@@ -6,7 +6,11 @@ global.__basedir = __dirname;
 
 const app=express();
 
-
+// Redirect to frontend
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname + "../frontend/build/index.html"));
+});
 
 require('./Model/User_Model');
 require('./Model/Address_Model');
@@ -24,8 +28,9 @@ app.use(require('./Route/Properties_Route'))
 app.use(require('./Route/Address_Route'))
 app.use(require('./Route/Interested_Route'))
 app.use(require('./Route/Tenant_Route'))
+app.use(require('./Route/Mulitple_Image.js'))
 
-const PORT=4000 || process.env.PORT;
+const PORT=5000 || process.env.PORT;
 
 app.listen(PORT,()=>{
     console.log("Server has been Started");

@@ -176,6 +176,7 @@ const AddProperty = () => {
               {image.preview && <img src={image.preview} width='100' height='100' />}
               <hr></hr>
               <input type='file' name='file' onChange={handleImgChange}></input>
+              
             </div>
             <div className="mb-3">
               <label for="add1" className="form-label">Address Line 1</label>
